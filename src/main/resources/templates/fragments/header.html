@@ -1,0 +1,7 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"><body>
+<header class="site-header" th:fragment="nav">
+  <a class="brand" href="/" aria-label="Saffron and Stone home"><span class="brand-mark">S<span>.</span></span><span class="brand-name">saffron <i>&</i> stone<small>THE NEIGHBORHOOD TABLE</small></span></a>
+  <nav class="main-nav"><a href="/#menu">The menu</a><a href="/contact">Our table</a><a th:if="${session.userId != null}" href="/orders">Your orders</a><a th:if="${session.isAdmin == true}" href="/admin">Admin</a></nav>
+  <div class="header-actions"><span class="welcome" th:if="${session.userName != null}" th:text="${session.userName}"></span><a class="account-link" href="/account" th:if="${session.userId == null}">Sign in</a><form th:if="${session.userId != null}" action="/account/logout" method="post"><button class="text-button" type="submit">Sign out</button></form><a class="bag-link" href="/#your-bag">Bag <b data-cart-count th:text="${cartCount != null ? cartCount : 0}">0</b></a></div>
+</header></body></html>
